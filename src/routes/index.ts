@@ -1,0 +1,5 @@
+export * from "./cliente.routes"
+export * from "./proveedor.routes"
+export * from "./producto.routes"
+export * from "./pedido.routes"
+export * from "./usuario.routes"

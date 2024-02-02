@@ -1,0 +1,5 @@
+export * from "./cliente.controller"
+export * from "./proveedor.controller"
+export * from "./producto.controller"
+export * from "./pedido.controller"
+export * from "./usuario.controller"

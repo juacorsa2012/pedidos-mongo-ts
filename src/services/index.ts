@@ -1,0 +1,5 @@
+export * from "./cliente.service"
+export * from "./proveedor.service"
+export * from "./producto.service"
+export * from "./pedido.service"
+export * from "./usuario.service"

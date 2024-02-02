@@ -1,0 +1,5 @@
+export * from "./cliente.interface"
+export * from "./proveedor.interface"
+export * from "./producto.interface"
+export * from "./pedido.interface"
+export * from "./usuario.interface"
