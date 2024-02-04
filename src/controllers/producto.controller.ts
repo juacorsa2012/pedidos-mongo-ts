@@ -91,7 +91,7 @@ export class ProductoController {
       }
   
       producto = await ProductoService.actualizarProducto(id, nombre)
-      HttpResponseOk(res, producto, null, Message.CLIENTE_ACTUALIZADO)
+      HttpResponseOk(res, producto, null, Message.PRODUCTO_ACTUALIZADO)
     } catch (error: any) {
         logger.error(`${error}`)
         HttpResponseError(res, error.message)

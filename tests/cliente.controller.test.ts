@@ -1,17 +1,20 @@
-import { StatusCodes } from 'http-status-codes'
 import request from "supertest"
 import mongoose from  "mongoose"
-import { ClienteModel } from "../src/models/cliente.model"
+import { StatusCodes } from 'http-status-codes'
+import { ClienteModel } from "../src/models"
 import { server } from "../src/server"
 import { Constant } from "../src/config/constants"
 import { Message } from '../src/config/messages'
+import { ClienteController } from "../src/controllers"
 
 let cliente1: any
 const url = '/api/v1/clientes/'
 const nombreCliente1 = "Cliente 1"
 const nombreCliente2 = "Cliente 2"
+const longitudMinimaNombreCliente = Constant.LONGITUD_MINIMA_NOMBRE_CLIENTE
+const longitudMaximaNombreCliente = Constant.LONGITUD_MAXIMA_NOMBRE_CLIENTE
 
-describe(`${url}`, () => {
+describe(`TEST: ${url}`, () => {
   beforeEach(async () => {       
     await ClienteModel.deleteMany({})
     cliente1 = await ClienteModel.create({ nombre: nombreCliente1})  
@@ -22,6 +25,22 @@ describe(`${url}`, () => {
     mongoose.connection.close()
     server.close()
   })
+
+  it("debe existir un función llamada obtenerClientes", () => {
+    expect(typeof ClienteController.obtenerClientes).toBe("function")
+  })
+
+  it("debe existir un función llamada obtenerCliente", () => {
+    expect(typeof ClienteController.obtenerCliente).toBe("function")
+  })
+
+  it("debe existir un función llamada registrarCliente", () => {
+    expect(typeof ClienteController.registrarCliente).toBe("function")
+  })
+
+  it("debe existir un función llamada actualizarCliente", () => {
+    expect(typeof ClienteController.actualizarCliente).toBe("function")
+  })  
 
   it("GET - debe devolver todos los clientes", async () => {
     const res = await request(server).get(url)        
@@ -71,7 +90,7 @@ describe(`${url}`, () => {
     expect(res.body.message).toBe(Message.CLIENTE_NOMBRE_REQUERIDO)
   })
 
-  it(`POST - debe devolver un error 400 cuando el nombre del cliente es inferior a ${Constant.LONGITUD_MINIMA_NOMBRE_CLIENTE} caracteres`, async () => {
+  it(`POST - debe devolver un error 400 cuando el nombre del cliente es inferior a ${longitudMinimaNombreCliente} caracteres`, async () => {
     const cliente = { nombre: "xx" }
     const res = await request(server).post(url).send(cliente)
     expect(res.statusCode).toBe(StatusCodes.BAD_REQUEST)          
@@ -79,7 +98,7 @@ describe(`${url}`, () => {
     expect(res.body.message).toBe(Message.CLIENTE_NOMBRE_CORTO)
   })
 
-  it(`POST - debe devolver un error 400 cuando el nombre del cliente es superior a ${Constant.LONGITUD_MAXIMA_NOMBRE_CLIENTE} caractares`, async () => {
+  it(`POST - debe devolver un error 400 cuando el nombre del cliente es superior a ${longitudMaximaNombreCliente} caractares`, async () => {
     const longitudMaxima = Constant.LONGITUD_MAXIMA_NOMBRE_CLIENTE
     let cliente = { nombre: new Array(longitudMaxima+2).join('a') }
     const res = await request(server).post(url).send(cliente)
@@ -91,7 +110,6 @@ describe(`${url}`, () => {
 
   it("POST - debe devolver un error 400 si el cliente ya existe en la base de datos", async () => {        
     const cliente = { nombre: nombreCliente1 }
-    await request(server).post(url).send(cliente)
     const res = await request(server).post(url).send(cliente)
     expect(res.statusCode).toBe(StatusCodes.BAD_REQUEST)  
     expect(res.body.status).toBe(Constant.ERROR)             
@@ -119,7 +137,7 @@ describe(`${url}`, () => {
     expect(res.body.message).toBe(Message.CLIENTE_NOMBRE_REQUERIDO)
   })    
 
-  it(`PUT - debe dar un error 400 si actualizamos un cliente con un nombre inferior a ${Constant.LONGITUD_MINIMA_NOMBRE_CLIENTE} caracteres`, async() => {
+  it(`PUT - debe dar un error 400 si actualizamos un cliente con un nombre inferior a ${longitudMinimaNombreCliente} caracteres`, async() => {
     const cliente = { nombre: "aa" }
     const res = await request(server).put(url + cliente1._id).send(cliente)
     expect(res.statusCode).toBe(StatusCodes.BAD_REQUEST)   
@@ -127,7 +145,7 @@ describe(`${url}`, () => {
     expect(res.body.message).toBe(Message.CLIENTE_NOMBRE_CORTO)
   })    
 
-  it(`PUT - debe dar un error 400 si actualizamos un cliente con un nombre superior a ${Constant.LONGITUD_MAXIMA_NOMBRE_CLIENTE} caracteres`, async() => {
+  it(`PUT - debe dar un error 400 si actualizamos un cliente con un nombre superior a ${longitudMaximaNombreCliente} caracteres`, async() => {
     const longitudMaxima = Constant.LONGITUD_MAXIMA_NOMBRE_CLIENTE
     let cliente = { nombre: new Array(longitudMaxima+2).join('a') }
     const res = await request(server).put(url + cliente1._id).send(cliente)
