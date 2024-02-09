@@ -33,7 +33,7 @@ export class UsuarioController {
       HttpResponseOk(res, usuarios, meta)        
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)    
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }   
   }
 
@@ -50,7 +50,7 @@ export class UsuarioController {
       HttpResponseOk(res, usuario, null)   
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 
@@ -73,7 +73,7 @@ export class UsuarioController {
       HttpResponseCreated(res, token, Message.USUARIO_REGISTRADO)
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }    
   }
 
@@ -99,7 +99,7 @@ export class UsuarioController {
       HttpResponseOk(res, token, "")      
     } catch (error: any) {
       logger.error(`${error}`)
-      HttpResponseError(res, error.message)    
+      HttpResponseError(res, Message.ERROR_GENERAL) 
     }
   }
 
@@ -119,7 +119,7 @@ export class UsuarioController {
       HttpResponseOk(res, usuario, null, Message.USUARIO_BORRADO)
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 
@@ -142,7 +142,7 @@ export class UsuarioController {
       HttpResponseOk(res, null, null, Message.USUARIO_ACTUALIZADO)
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 }

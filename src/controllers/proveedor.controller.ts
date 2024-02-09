@@ -31,7 +31,7 @@ export class ProveedorController {
       HttpResponseOk(res, proveedores, meta)        
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)    
+        HttpResponseError(res, Message.ERROR_GENERAL)  
     }   
   }
 
@@ -48,7 +48,7 @@ export class ProveedorController {
       HttpResponseOk(res, proveedor, null)   
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 
@@ -69,7 +69,7 @@ export class ProveedorController {
       HttpResponseCreated(res, proveedor, Message.PROVEEDOR_REGISTRADO)    
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }    
   }
 
@@ -95,7 +95,7 @@ export class ProveedorController {
       HttpResponseOk(res, proveedor, null, Message.PROVEEDOR_ACTUALIZADO)
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 }

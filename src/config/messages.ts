@@ -1,4 +1,5 @@
 export const Message = {
+  ERROR_GENERAL: "Opps, ha sido imposible completar la acción solocitada. Por favor, contacte con el administrador de la aplicación.",
   CLIENTE_REGISTRADO: "Cliente registrado con éxito",
   CLIENTE_ACTUALIZADO: "Cliente actualizado con éxito",
   CLIENTE_NO_ENCONTRADO: "Cliente no encontrado",
@@ -41,7 +42,7 @@ export const Message = {
   USUARIO_NOMBRE_REQUERIDO: "El nombre es un dato requerido",
   USUARIO_EMAIL_REQUERIDO: "El email es un dato requerido",
   USUARIO_PASSWORD_REQUERIDO: "El password es un dato requerido",
-  USUARIO_NOMBRE_TIPO: "El password es un dato requerido",
+  USUARIO_NOMBRE_TIPO: "El nombre del usuario debe ser una cadena de texto",
   USUARIO_NOMBRE_CADENA : "El nombre del usuario debe ser una cadena de texto de al menos 3 caracteres",
   USUARIO_NOMBRE_LARGO: "El nombre del usuario es demasiado largo",
   USUARIO_NOMBRE_CORTO: "El nombre del usuario es demasiado corto",

@@ -31,7 +31,7 @@ export class ClienteController {
       HttpResponseOk(res, clientes, meta)        
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)    
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }   
   }
 
@@ -48,7 +48,7 @@ export class ClienteController {
       HttpResponseOk(res, cliente, null)   
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 
@@ -69,7 +69,7 @@ export class ClienteController {
       HttpResponseCreated(res, cliente, Message.CLIENTE_REGISTRADO)    
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }    
   }
 
@@ -95,7 +95,7 @@ export class ClienteController {
       HttpResponseOk(res, cliente, null, Message.CLIENTE_ACTUALIZADO)
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 }

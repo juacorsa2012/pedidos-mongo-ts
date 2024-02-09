@@ -31,7 +31,7 @@ export class ProductoController {
       HttpResponseOk(res, productos, meta)        
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)    
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }   
   }
 
@@ -48,7 +48,7 @@ export class ProductoController {
       HttpResponseOk(res, producto, null)   
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 
@@ -68,7 +68,7 @@ export class ProductoController {
       HttpResponseCreated(res, producto, Message.PRODUCTO_REGISTRADO)    
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }    
   }
 
@@ -94,7 +94,7 @@ export class ProductoController {
       HttpResponseOk(res, producto, null, Message.PRODUCTO_ACTUALIZADO)
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 }
