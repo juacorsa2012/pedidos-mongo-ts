@@ -18,7 +18,11 @@
     "test:clientes": "npx jest tests/cliente.controller.test.ts",
     "test:clientes:watch": "npx jest --watchAll tests/cliente.controller.test.ts",
     "test:productos": "npx jest tests/producto.controller.test.ts",
-    "test:productos:watch": "npx jest --watchAll tests/producto.controller.test.ts"
+    "test:productos:watch": "npx jest --watchAll tests/producto.controller.test.ts",
+    "test:proveedores": "npx jest tests/proveedor.controller.test.ts",
+    "test:proveedores:watch": "npx jest --watchAll tests/proveedor.controller.test.ts"
+
+
   },
   "keywords": [],
   "author": "",

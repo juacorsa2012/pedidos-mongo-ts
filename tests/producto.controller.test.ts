@@ -109,7 +109,6 @@ describe(`TEST: ${url}`, () => {
 
   it("POST - debe devolver un error 400 si el producto ya existe en la base de datos", async () => {        
     const producto = { nombre: nombreProducto1 }
-    //await request(server).post(url).send(producto)
     const res = await request(server).post(url).send(producto)
     expect(res.statusCode).toBe(StatusCodes.BAD_REQUEST)  
     expect(res.body.status).toBe(Constant.ERROR)             
