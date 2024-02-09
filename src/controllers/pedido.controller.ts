@@ -34,7 +34,7 @@ export class PedidoController {
       HttpResponseOk(res, pedidos, meta)        
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)    
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }   
   }
 
@@ -51,7 +51,7 @@ export class PedidoController {
       HttpResponseOk(res, pedido, null)   
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 
@@ -67,7 +67,7 @@ export class PedidoController {
       HttpResponseCreated(res, resultado, Message.PEDIDO_REGISTRADO)    
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }    
   }
 
@@ -86,7 +86,7 @@ export class PedidoController {
       HttpResponseOk(res, pedido, null, Message.PEDIDO_BORRADO)   
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }
 
@@ -105,7 +105,7 @@ export class PedidoController {
       HttpResponseOk(res, pedido, null, Message.PEDIDO_ACTUALIZADO)   
     } catch (error: any) {
         logger.error(`${error}`)
-        HttpResponseError(res, error.message)
+        HttpResponseError(res, Message.ERROR_GENERAL)
     }
   }  
 }

@@ -36,6 +36,7 @@ export const Message = {
   PEDIDO_UNIDADES_REQUERIDO: "El número de unidades es un dato requerido",
   PEDIDO_UNIDADES_TIPO_ENTERO: "El número de unidades debe ser un número entero",
   PEDIDO_UNIDADES_POSITIVO: "El número de unidades debe ser un número entero mayor que cero",
+  PEDIDO_ESTADO_REQUERIDO: "El estado es un dato requerido",
 
   USUARIO_REGISTRADO: "Usuario registrado con éxito",
   USUARIO_YA_EXISTE: "El usuario ya está registrado en el sistema",
