@@ -52,6 +52,26 @@ describe(`TEST: ${url}`, () => {
     expect(res.body.data.length).toBe(2)
   })
 
+  it("GET - debe devolver todos los clientes ordenados por nombre de forma descendente", async () => {
+    const res = await request(server).get("/api/v1/clientes?sort=-nombre")        
+    expect(res.statusCode).toBe(StatusCodes.OK)
+    expect(res.body.status).toBe(Constant.SUCCESS)
+    expect(res.body.message).toBe("")
+    expect(res.body.data).toBeDefined()  
+    expect(res.body.meta).toBeDefined()  
+    expect(res.body.data.length).toBe(2)
+  })
+
+  it("GET - debe devolver todos los clientes ordenados por nombre de forma ascendente", async () => {
+    const res = await request(server).get("/api/v1/clientes?sort=nombre")        
+    expect(res.statusCode).toBe(StatusCodes.OK)
+    expect(res.body.status).toBe(Constant.SUCCESS)
+    expect(res.body.message).toBe("")
+    expect(res.body.data).toBeDefined()  
+    expect(res.body.meta).toBeDefined()  
+    expect(res.body.data.length).toBe(2)
+  })
+
   it("GET - debe devolver un cliente", async () => {
     const res = await request(server).get(url + cliente1._id)
     expect(res.statusCode).toBe(StatusCodes.OK)
