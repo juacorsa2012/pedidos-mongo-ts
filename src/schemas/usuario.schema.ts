@@ -16,8 +16,8 @@ export const CreateUsuarioSchema = z.object({
       required_error: Message.USUARIO_PASSWORD_REQUERIDO,
       invalid_type_error: Message.USUARIO_PASSWORD_CADENA
     })
-    .min(3, Message.USUARIO_PASSWORD_CORTO)
-    .max(50, Message.USUARIO_PASSWORD_LARGO),
+    .min(Constant.LONGITUD_MINIMA_PASSWORD_USUARIO, Message.USUARIO_PASSWORD_CORTO)
+    .max(Constant.LONGITUD_MAXIMA_PASSWORD_USUARIO, Message.USUARIO_PASSWORD_LARGO),
 
     email: z.string({
       required_error: Message.USUARIO_EMAIL_REQUERIDO,
@@ -45,8 +45,8 @@ export const UpdateUsuarioSchema = z.object({
       required_error: Message.USUARIO_PASSWORD_REQUERIDO,
       invalid_type_error: Message.USUARIO_PASSWORD_CADENA
     })
-    .min(3, Message.USUARIO_PASSWORD_CORTO)
-    .max(50, Message.USUARIO_PASSWORD_LARGO),
+    .min(Constant.LONGITUD_MINIMA_PASSWORD_USUARIO, Message.USUARIO_PASSWORD_CORTO)
+    .max(Constant.LONGITUD_MAXIMA_PASSWORD_USUARIO, Message.USUARIO_PASSWORD_LARGO),
 
     email: z.string({
       required_error: Message.USUARIO_EMAIL_REQUERIDO,
@@ -70,8 +70,8 @@ export const LoginUsuarioSchema = z.object({
       required_error: Message.USUARIO_PASSWORD_REQUERIDO,
       invalid_type_error: Message.USUARIO_PASSWORD_CADENA
     })
-    .min(3, Message.USUARIO_PASSWORD_CORTO)
-    .max(50, Message.USUARIO_PASSWORD_LARGO),
+    .min(Constant.LONGITUD_MINIMA_PASSWORD_USUARIO, Message.USUARIO_PASSWORD_CORTO)
+    .max(Constant.LONGITUD_MAXIMA_PASSWORD_USUARIO, Message.USUARIO_PASSWORD_LARGO),
 
     email: z.string({
       required_error: Message.USUARIO_EMAIL_REQUERIDO     

@@ -1,8 +1,8 @@
 import express from "express"
 import hpp from "hpp"
 import helmet from "helmet"
-import { rateLimit } from "express-rate-limit"
 import mongoSanitize  from "express-mongo-sanitize"
+import { rateLimit } from "express-rate-limit"
 import { clienteRouter, proveedorRouter, productoRouter, pedidoRouter, usuarioRouter } from "./routes"
 import { corsMiddleware } from "./middlewares/cors"
 import { Constant } from "./config/constants"
@@ -29,3 +29,6 @@ app.use(Constant.URL_V1_PRODUCTOS, productoRouter)
 app.use(Constant.URL_V1_PEDIDOS, pedidoRouter)
 app.use(Constant.URL_V1_USUARIOS, usuarioRouter)
 
+// TODO
+// error npm run build
+// postman

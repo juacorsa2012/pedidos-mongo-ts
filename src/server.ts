@@ -3,7 +3,7 @@ import { conectarDB } from "./config/mongo"
 import { logger } from "./config/logger"
 import { Constant } from "./config/constants"
 
-import { app } from './app'
+import { app } from "./app"
 
 const PORT = process.env.PORT || 3000
 const DB_URI = <string>process.env.DB_URI

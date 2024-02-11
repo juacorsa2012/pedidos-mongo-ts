@@ -6,7 +6,7 @@ import { isAuth, isRol } from "../middlewares/auth"
 
 export const clienteRouter: Router = Router()
 
-clienteRouter.get('/', ClienteController.obtenerClientes)
+clienteRouter.get('/', isAuth, ClienteController.obtenerClientes)
 clienteRouter.get('/:id', ClienteController.obtenerCliente)
 clienteRouter.post('/', validateSchema(CreateClienteSchema), ClienteController.registrarCliente)
 clienteRouter.put('/:id', validateSchema(UpdateClienteSchema), ClienteController.actualizarCliente)

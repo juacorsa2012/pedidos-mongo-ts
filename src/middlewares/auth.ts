@@ -6,6 +6,10 @@ import { UsuarioModel } from "../models"
 import { logger } from "../config/logger"
 import { Constant } from "../config/constants"
 
+interface JwtPayload {
+  id: string
+}
+
 export const isAuth = async (req: Request, res: Response, next: NextFunction) => {
   let token = ""
 
@@ -19,14 +23,16 @@ export const isAuth = async (req: Request, res: Response, next: NextFunction) =>
   }
 
   try {
-    const payload = jwt.verify(token, <string>process.env.JWT_SECRET)
+    const payload = jwt.verify(token, <string>process.env.JWT_SECRET) as JwtPayload
 
     if (!payload) {
       HttpResponseUnthorize(res, Message.USUARIO_ACCESO_DENEGADO)
       return  
     }
 
-    const usuario = await UsuarioModel.findById({_id: payload.id}, {password: 0}) 
+    logger.info(payload)
+
+    const usuario = await UsuarioModel.findOne({_id: payload.id}, {password: 0}) 
 
     if (!usuario) {
       HttpResponseUnthorize(res, Message.USUARIO_ACCESO_DENEGADO)

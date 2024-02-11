@@ -18,7 +18,11 @@ export const CreatePedidoSchema = z.object({
       required_error: Message.PEDIDO_UNIDADES_REQUERIDO,
       invalid_type_error: Message.PEDIDO_UNIDADES_TIPO_ENTERO,
     }).positive(Message.PEDIDO_UNIDADES_POSITIVO),
-    estado: z.enum([Constant.ESTADO_ENTREGADO, Constant.ESTADO_FACTURADO, Constant.ESTADO_PEDIDO, Constant.ESTADO_PREPARADO])
+    estado: 
+      z.enum([Constant.ESTADO_ENTREGADO, Constant.ESTADO_FACTURADO, Constant.ESTADO_PEDIDO, Constant.ESTADO_PREPARADO],
+      {
+        required_error: Message.PEDIDO_ESTADO_NO_PERMITIDO
+      })
   })
 })
 
@@ -37,7 +41,10 @@ export const UpdatePedidoSchema = z.object({
       required_error: Message.PEDIDO_UNIDADES_REQUERIDO,
       invalid_type_error: Message.PEDIDO_UNIDADES_TIPO_ENTERO,
     }).positive(Message.PEDIDO_UNIDADES_POSITIVO),
-    estado: z.enum([Constant.ESTADO_ENTREGADO, Constant.ESTADO_FACTURADO, Constant.ESTADO_PEDIDO, Constant.ESTADO_PREPARADO])
+    estado: 
+      z.enum([Constant.ESTADO_ENTREGADO, Constant.ESTADO_FACTURADO, Constant.ESTADO_PEDIDO, Constant.ESTADO_PREPARADO], {
+        required_error: Message.PEDIDO_ESTADO_NO_PERMITIDO
+      })
   }),
   params: z.object({
     id: z.custom<mongoose.Types.ObjectId>()
